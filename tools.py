@@ -15,6 +15,13 @@ def network_recon(target_ip):
     print(f"\n[🔧 TOOL] Running Network Recon on {target_ip}...")
     
 
+    import urllib.parse
+    
+    # Clean target_ip in case user inputs a URL or port
+    if "://" in target_ip:
+        target_ip = urllib.parse.urlparse(target_ip).hostname
+    target_ip = target_ip.split(":")[0]
+
     open_ports = []
     ports_to_check = [80, 443, 5000, 5001, 8000, 8080]
     

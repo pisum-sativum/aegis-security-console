@@ -13,7 +13,10 @@ from tkinter.scrolledtext import ScrolledText
 
 PROJECT_ROOT = Path(__file__).resolve().parent
 MAIN_SCRIPT = PROJECT_ROOT / "main.py"
-CONFIG_PATH = PROJECT_ROOT / ".aegis_ui_config.json"
+if getattr(sys, 'frozen', False):
+    CONFIG_PATH = Path(sys.executable).resolve().parent / ".aegis_ui_config.json"
+else:
+    CONFIG_PATH = PROJECT_ROOT / ".aegis_ui_config.json"
 
 
 class NeonProgress(tk.Canvas):

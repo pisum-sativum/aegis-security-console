@@ -18,7 +18,13 @@ def run_fallback_audit(target_ip, memory_bank):
     """Runs a deterministic scan path when the AI model is unavailable."""
     print("🤖 AI Brain unavailable. Switching to deterministic fallback mode...")
 
-    base_url = f"http://{target_ip}:5000"
+    # Robust URL construction
+    if "://" in target_ip:
+        base_url = target_ip
+    elif ":" in target_ip:
+        base_url = f"http://{target_ip}"
+    else:
+        base_url = f"http://{target_ip}:5000"
     fallback_plan = [
         ("network_recon", {"target_ip": target_ip}),
         ("local_directory_mapper", {"base_url": base_url}),

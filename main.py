@@ -7,8 +7,13 @@ import sys
 import io
 
 # Force UTF-8 encoding for standard output to fix Windows emoji crashing
-if sys.stdout.encoding.lower() != 'utf-8':
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+if sys.stdout is not None:
+    _encoding = getattr(sys.stdout, 'encoding', None)
+    if _encoding and _encoding.lower() != 'utf-8':
+        try:
+            sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+        except AttributeError:
+            pass
 
 # ==========================================
 # AEGIS-AGENT: THE CORE LOOP (ReAct)

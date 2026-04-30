@@ -9,13 +9,6 @@
 
 ---
 
-## 🎨 System Interface
-
-![Aegis Security Console Preview](https://raw.githubusercontent.com/pisum-sativum/aegis-security-console/main/assets/preview.png)
-*Note: The Aegis interface is designed for maximum situational awareness and autonomous operation.*
-
----
-
 ## 🌌 Core Features
 
 | Feature | Description |
@@ -54,8 +47,7 @@ aegis_project/
 ├── main.py             # The core ReAct loop that controls the autonomous agent
 ├── ai_engine.py        # AI Provider connection and authentication manager
 ├── tools.py            # Security suite: Network Recon, API Parser, HTTP Client
-├── run_aegis.py        # Master Bootloader for compilation
-└── assets/             # System visuals and iconography
+└── run_aegis.py        # Master Bootloader for compilation
 ```
 
 ---
